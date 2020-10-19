@@ -9,18 +9,18 @@ export default class TitleScene extends Phaser.Scene {
   create () {
     // Game
     this.gameButton = this.add.sprite(100, 200, 'blueButton1').setInteractive();
-    this.centerButton(this.gameButton, 1);
+    this.centerButton(this.gameButton, 1.5);
 
     this.gameText = this.add.text(0, 0, 'Play', { fontSize: '32px', fill: '#fff' });
     this.centerButtonText(this.gameText, this.gameButton);
 
     this.gameButton.on('pointerdown', function (pointer) {
-      this.scene.start('Game');
+      this.scene.start('Game'); 
     }.bind(this));
 
     // Options
     this.optionsButton = this.add.sprite(300, 200, 'blueButton1').setInteractive();
-    this.centerButton(this.optionsButton);
+    this.centerButton(this.optionsButton, 0.5);
 
     this.optionsText = this.add.text(0, 0, 'Options', { fontSize: '32px', fill: '#fff' });
     this.centerButtonText(this.optionsText, this.optionsButton);
@@ -31,13 +31,24 @@ export default class TitleScene extends Phaser.Scene {
 
     // Credits
     this.creditsButton = this.add.sprite(300, 200, 'blueButton1').setInteractive();
-    this.centerButton(this.creditsButton, -1);
+    this.centerButton(this.creditsButton, -0.5);
 
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
     this.centerButtonText(this.creditsText, this.creditsButton);
 
     this.creditsButton.on('pointerdown', function (pointer) {
       this.scene.start('Credits');
+    }.bind(this));
+
+    //leader board
+    this.leaderBoardButton = this.add.sprite(300, 200, 'blueButton1').setInteractive();
+    this.centerButton(this.leaderBoardButton, -1.5);
+
+    this.leaderBoardText = this.add.text(0, 0, 'Leader Board', { fontSize: '25px', fill: '#fff' });
+    this.centerButtonText(this.leaderBoardText, this.leaderBoardButton);
+
+    this.leaderBoardButton.on('pointerdown', function (pointer) {
+      this.scene.start('LeaderBoard');
     }.bind(this));
 
     this.input.on('pointerover', function (event, gameObjects) {

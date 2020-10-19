@@ -1,4 +1,5 @@
 import 'phaser';
+import  { saveScore } from '../Score/scoreApi';
 
 export default class GameScene extends Phaser.Scene {
   constructor () {
@@ -9,6 +10,8 @@ export default class GameScene extends Phaser.Scene {
     this.scoreText = null;
     this.powerText = null;
     this.fires = null;
+    this.treasure = null;
+    this.name = null;
   }
 
   preload () {
@@ -18,6 +21,7 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('obstacle', 'assets/obstacle2.png');
     this.load.image('flower', 'assets/flower.png');
     this.load.image('fire', 'assets/fire.png');
+    this.load.image('treasure', 'assets/treasure.png');
     this.load.spritesheet('bady', 
         'assets/shadow_soul2.png',
         { frameWidth: 72, frameHeight: 128 }
@@ -45,7 +49,7 @@ export default class GameScene extends Phaser.Scene {
       fire.setScale(0.25);
       fire.body.setGravityY(null);
       fire.body.setGravityX(300);
-      fire.setCollideWorldBounds(true);
+      //fire.setCollideWorldBounds(true);
       this.physics.add.collider(fire, this.physics.world, this.hitWorldBounds, null, this);
       this.power = this.power - 1;
       this.powerText.setText('power: ' + this.power);
@@ -63,19 +67,50 @@ export default class GameScene extends Phaser.Scene {
     this.scoreText.setText('score: ' + this.score);
   }
 
+  endGame(player, bady) {
+    this.physics.pause();
+
+    this.player.setTint(0xff0000);
+
+    this.player.anims.play('turn');
+
+    saveScore(this.name, this.score);
+
+    this.scene.start('LeaderBoard');
+  }
+
+  winGame(player, treasure) {
+    this.physics.pause();
+
+    this.player.setTint(0x00ff00);
+
+    this.player.anims.play('turn');
+
+    this.scene.start('Credits');
+  }
+
   create () {
-    this.add.image(400, 300, 'background');
-    this.add.image(1426, 300, 'background');
+    this.name = prompt("Enter your Name : ", "Enter your name"); 
+    let backgrounds = this.physics.add.staticGroup({
+      key: 'background',
+      repeat: 10,
+      setXY: { x: 400, y: 300, stepX: 1026 }
+    });
+
     let platforms = this.physics.add.staticGroup({
       key: 'ground',
-      repeat: 10,
-      setXY: { x: 120, y: 568, stepX: 255 }
+      repeat: 100,
+      setXY: { x: 15, y: 568, stepX: 255 }
     });
+
+    this.treasure = this.physics.add.staticGroup();
+
+    this.treasure.create(11000, 480, 'treasure').setScale(0.2).refreshBody();
 
     let obstacles = this.physics.add.staticGroup({
       key: 'obstacle',
       repeat: 10,
-      setXY: { x: 640, y: 479, stepX: 700 }
+      setXY: { x: 940, y: 479, stepX: 1500 }
     });
 
     obstacles.children.iterate(function (child) {
@@ -106,32 +141,31 @@ export default class GameScene extends Phaser.Scene {
     let badies = this.physics.add.group({
       key: 'bady',
       repeat: 10,
-      setXY: { x: 300, y: 200, stepX: 700 }
+      setXY: { x: 600, y: 200, stepX: 1400 }
     });
 
     
     badies.children.iterate(function (child) {
       child.setBounce(0.5);
-      child.setCollideWorldBounds(true);
+      //child.setCollideWorldBounds(true);
       child.body.setGravityY(300);
-      child.setVelocity(-160);
+      child.setVelocityX(-160);
 
     });
     
     this.physics.add.collider(badies, platforms);
     this.physics.add.collider(badies, obstacles, (bady) => {
       badies.children.iterate(function (child) {
-        child.setVelocity(-160)
+        child.setVelocityX(-child.body.velocity.x);
       })
     });
 
     this.player = this.physics.add.sprite(50, 200, 'hero');
     
     this.player.setBounce(0.5);
-    //this.player.setCollideWorldBounds(true);
-    this.player.body.setGravityY(300)
-
+    this.player.body.setGravityY(300);
     this.physics.add.collider(this.player, platforms);
+    this.physics.add.collider(this.player, obstacles);
 
     this.anims.create({
       key: 'left',
@@ -160,9 +194,13 @@ export default class GameScene extends Phaser.Scene {
     
     this.physics.add.overlap(this.player, flowers, this.collectFlowers, null, this);
     this.physics.add.overlap(this.fires, badies, this.killBady, null, this);
+    this.physics.add.overlap(this.player, badies, this.endGame, null, this);
+    this.physics.add.overlap(this.player, this.treasure, this.winGame, null, this);
 
-    this.powerText = this.add.text(16, 16, 'power: 0', { fontSize: '22px', fill: '#fff' });
-    this.scoreText = this.add.text(16, 50, 'score: 0', { fontSize: '22px', fill: '#fff' });
+
+    this.playerText = this.add.text(this.player.x, -38, this.name, { fontSize: '22px', fill: '#fff' });
+    this.powerText = this.add.text(this.player.x, 16, 'power: 0', { fontSize: '22px', fill: '#fff' });
+    this.scoreText = this.add.text(this.player.x, 50, 'score: 0', { fontSize: '22px', fill: '#fff' });
 
   }
 
@@ -170,16 +208,20 @@ export default class GameScene extends Phaser.Scene {
 
     let cursors = this.input.keyboard.createCursorKeys();
 
-    if (cursors.left.isDown)
+    if (cursors.left.isDown && this.player.x > 15)
     {
       this.player.setVelocityX(-160);
-
+      this.powerText.x = this.player.x;
+      this.scoreText.x = this.player.x;
+      this.playerText.x = this.player.x;
       this.player.anims.play('left', true);
     }
     else if (cursors.right.isDown)
     {
       this.player.setVelocityX(160);
-
+      this.powerText.x = this.player.x;
+      this.scoreText.x = this.player.x;
+      this.playerText.x = this.player.x;
       this.player.anims.play('right', true);
     }
     else
@@ -189,7 +231,7 @@ export default class GameScene extends Phaser.Scene {
       this.player.anims.play('turn');
     }
 
-    if (cursors.up.isDown)
+    if (cursors.up.isDown && this.player.body.touching.down)
     {
       this.player.setVelocityY(-330);
     }

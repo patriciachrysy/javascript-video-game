@@ -7,10 +7,6 @@ export default class LeaderBoardScene extends Phaser.Scene {
     super('LeaderBoard');
   }
 
-  preload() {
-    this.loadScores();
-  }
-
   create () {
     this.creditsText = this.add.text(0, 0, 'Best Scores', { fontSize: '32px', fill: '#fff' });
     this.zone = this.add.zone(config.width/2, config.height/2, config.width, config.height);
@@ -22,29 +18,12 @@ export default class LeaderBoardScene extends Phaser.Scene {
 
     this.creditsText.setY(100)
 
-    let pos = 200;
+    this.pos = 200;
 
-    if (this.scores){
-      for(let score of this.scores) {
-        let madeByText = this.add.text(0, 0, score.user + ': ' + score.score, { fontSize: '26px', fill: '#fff' });
-  
-        Phaser.Display.Align.In.Center(
-          this.madeByText,
-          this.zone
-        );
-    
-        this.madeByText.setY(pos);
-        pos += 100;
-      }
-    }
-
-    
-    
-
-    
+    this.loadScores();
 
     //Back board
-    this.leaderBoardButton = this.add.sprite(pos + 100, 200, 'blueButton1').setInteractive();
+    this.leaderBoardButton = this.add.sprite(this.pos + 100, 200, 'blueButton1').setInteractive();
     this.centerButton(this.leaderBoardButton, -2);
 
     this.leaderBoardText = this.add.text(0, 0, 'Back', { fontSize: '25px', fill: '#fff' });
@@ -72,7 +51,16 @@ export default class LeaderBoardScene extends Phaser.Scene {
 
   async loadScores () {
     this.scores = await getScores();
-    console.log(this.scores);
-    console.log(typeof(this.scores))
+    for(let score of this.scores) {
+      let madeByText = this.add.text(0, 0, score.user + ': ' + score.score, { fontSize: '26px', fill: '#fff' });
+
+      Phaser.Display.Align.In.Center(
+        madeByText,
+        this.zone
+      );
+  
+      madeByText.setY(this.pos);
+      this.pos += 100;
+    }
   }
 };

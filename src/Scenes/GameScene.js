@@ -76,6 +76,10 @@ export default class GameScene extends Phaser.Scene {
 
     saveScore(this.name, this.score);
 
+    this.score = 0;
+
+    this.power = 0;
+
     this.scene.start('LeaderBoard');
   }
 
@@ -85,6 +89,12 @@ export default class GameScene extends Phaser.Scene {
     this.player.setTint(0x00ff00);
 
     this.player.anims.play('turn');
+
+    saveScore(this.name, this.score);
+
+    this.score = 0;
+
+    this.power = 0;
 
     this.scene.start('Credits');
   }

@@ -1,7 +1,7 @@
 # JavaScript Capstone Project - Platform Game
 
 <h1 align="center">
-  Sword Quest
+  Treasure Hunt
 </h1> 
 
 > Final project in the Microverse JavaScript Curriculum
@@ -21,16 +21,18 @@ Project Link: [Javascript-Capstone](https://github.com/taiwocoker/Platform-Game)
 ## The game
 
 - A simple game in 2D
-- the main character must get escalibur to claim the throne of his kingdom
-- he has 20 shurikens in the begining and he can use them to throw on the badies
-- he must either avoid badies or throw bombs at them to make them dispear
+- the main character must fovercome allthe dangers and obstacles to get the treasure box
+- he has 0 power in the begining but he can pick up magic flower to get them and he can throw fire on the badies
+- he must either avoid badies or throw fire at them to make them disapear
 - he dies if he colides with badies
-- he has to collect diamonds to recharge his bombs to 20
-- The game ends when he finally collects the sword.
+- he has to collect magic flowers to recharge his powers
+- The game ends when he finally collects the treasure box.
 
 ### How to play
 
-
+- When the game starts, choose some options and then click on the menu button
+- Afterward, click on the play button and written your name in the box
+- Use key left and right to move the player horizontally, up to jump, and space to throw fire on badies
 
 #### Get a local copy
 

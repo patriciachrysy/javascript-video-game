@@ -41,7 +41,6 @@ const getScores = async () => {
     const result = await response.json();
     return result.result;
   } catch (error) {
-    console.log(error);
     return 'Error';
   }
 };

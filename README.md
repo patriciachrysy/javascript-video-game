@@ -14,7 +14,7 @@ Implementation of a Jump-Based Endless Runner Game built with the [Phaser 3](htt
 The main objective of this project was to build a platform game.
 
 
-Live version of the project: [Live version](https://endless-run.netlify.app/)
+Live version of the project: [Live version]()
 
 Project Link: [Javascript-Capstone](https://github.com/patriciachrysy/javascript-capstone)
 

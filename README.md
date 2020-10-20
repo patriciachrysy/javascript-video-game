@@ -84,7 +84,7 @@ All of the sprites, backgrounds, buttons and the background music can be found o
 
 **Credits Scene**
 
-![screenshot](./credit_scene.png)
+![screenshot](./credits_scene.png)
 
 **Leaderboard Scene**
 

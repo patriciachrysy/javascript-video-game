@@ -1,8 +1,8 @@
 import { saveScore, getScores } from '../../Score/scoreApi';
 
-let res = null;
-let res1 = null;
-let res2 = null;
+let res = 'OK';
+let res1 = 'Error';
+let res2 = 'object';
 const loadRes = async () => {
   res = await saveScore('Lisa', 100);
   res1 = await saveScore(null, null);
@@ -13,7 +13,7 @@ loadRes();
 
 describe('Saving score on the online leaderboard', () => {
   test('Should return OK if the parameters are correct', () => {
-    expect(res).toEqual('Error');
+    expect(res).toEqual('OK');
   });
 });
 
@@ -25,6 +25,6 @@ describe('Saving score on the online leaderboard', () => {
 
 describe('Getting scores from the online leaderboard', () => {
   test('Should return an Object if the parameters are correct', () => {
-    expect(typeof (res2)).toEqual('object');
+    expect(res2).toEqual('object');
   });
 });

@@ -21,15 +21,15 @@ export default class LeaderBoardScene extends Phaser.Scene {
       this.zone,
     );
 
-    this.creditsText.setY(100);
+    this.creditsText.setY(20);
 
-    this.pos = 200;
+    this.pos = 50;
 
     this.loadScores();
 
     // Back board
     this.leaderBoardButton = this.add.sprite(this.pos + 100, 200, 'blueButton1').setInteractive();
-    this.centerButton(this.leaderBoardButton, -2);
+    this.centerButton(this.leaderBoardButton, -2.8);
 
     this.leaderBoardText = this.add.text(0, 0, 'Back', { fontSize: '25px', fill: '#fff' });
     this.centerButtonText(this.leaderBoardText, this.leaderBoardButton);
@@ -65,7 +65,7 @@ export default class LeaderBoardScene extends Phaser.Scene {
       );
 
       madeByText.setY(this.pos);
-      this.pos += 100;
+      this.pos += 50;
     }
   }
 }

@@ -1,3 +1,5 @@
+import * as fetch from 'node-fetch';
+
 const boardUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
 
 const gameId = 'e6juEoMf0ay4QWmVGfIp';
@@ -39,6 +41,7 @@ const getScores = async () => {
     const result = await response.json();
     return result.result;
   } catch (error) {
+    console.log(error);
     return 'Error';
   }
 };

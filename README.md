@@ -14,7 +14,7 @@ Implementation of a Jump-Based Endless Runner Game built with the [Phaser 3](htt
 The main objective of this project was to build a platform game.
 
 
-Live version of the project: [Live version]()
+Live version of the project: [Live version](https://treasure-hunt-game.netlify.app/)
 
 Project Link: [Javascript-Capstone](https://github.com/patriciachrysy/javascript-capstone)
 
@@ -40,7 +40,7 @@ Project Link: [Javascript-Capstone](https://github.com/patriciachrysy/javascript
 
 ### Installation
 
-You can always use the [live version]() to play right away or install it locally using these steps:
+You can always use the [live version](https://treasure-hunt-game.netlify.app/) to play right away or install it locally using these steps:
 
 **Clone the repository by running this command in your terminal**
 ```

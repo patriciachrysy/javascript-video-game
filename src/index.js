@@ -1,3 +1,7 @@
+/*
+  eslint-disable import/no-extraneous-dependencies, no-undef
+*/
+
 import 'phaser';
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';
@@ -9,7 +13,7 @@ import CreditsScene from './Scenes/CreditsScene';
 import LeaderBoardScene from './Scenes/LeaderBoardScene';
 
 class Game extends Phaser.Game {
-  constructor () {
+  constructor() {
     super(config);
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);

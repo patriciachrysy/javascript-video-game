@@ -1,66 +1,71 @@
+/*
+  eslint-disable import/no-extraneous-dependencies, no-undef, class-methods-use-this,
+   no-unused-vars, no-restricted-syntax
+*/
+
 import 'phaser';
 import config from '../Config/config';
-import  { getScores } from '../Score/scoreApi';
+import { getScores } from '../Score/scoreApi';
 
 export default class LeaderBoardScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('LeaderBoard');
   }
 
-  create () {
+  create() {
     this.creditsText = this.add.text(0, 0, 'Best Scores', { fontSize: '32px', fill: '#fff' });
-    this.zone = this.add.zone(config.width/2, config.height/2, config.width, config.height);
+    this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
     Phaser.Display.Align.In.Center(
       this.creditsText,
-      this.zone
+      this.zone,
     );
 
-    this.creditsText.setY(100)
+    this.creditsText.setY(100);
 
     this.pos = 200;
 
     this.loadScores();
 
-    //Back board
+    // Back board
     this.leaderBoardButton = this.add.sprite(this.pos + 100, 200, 'blueButton1').setInteractive();
     this.centerButton(this.leaderBoardButton, -2);
 
     this.leaderBoardText = this.add.text(0, 0, 'Back', { fontSize: '25px', fill: '#fff' });
     this.centerButtonText(this.leaderBoardText, this.leaderBoardButton);
 
-    this.leaderBoardButton.on('pointerdown', function (pointer) {
+    this.leaderBoardButton.on('pointerdown', (pointer) => {
       this.scene.start('Title');
-    }.bind(this));
-    
+    });
   }
 
-  centerButton (gameObject, offset = 0) {
+  centerButton(gameObject, offset = 0) {
     Phaser.Display.Align.In.Center(
       gameObject,
-      this.add.zone(config.width/2, config.height/2 - offset * 100, config.width, config.height)
+      this.add.zone(config.width / 2, config.height / 2 - offset * 100,
+        config.width, config.height),
     );
   }
 
-  centerButtonText (gameText, gameButton) {
+  centerButtonText(gameText, gameButton) {
     Phaser.Display.Align.In.Center(
       gameText,
-      gameButton
+      gameButton,
     );
   }
 
-  async loadScores () {
+  async loadScores() {
     this.scores = await getScores();
-    for(let score of this.scores) {
-      let madeByText = this.add.text(0, 0, score.user + ': ' + score.score, { fontSize: '26px', fill: '#fff' });
+    for (const score of this.scores) {
+      const madeByText = this.add.text(0, 0, `${score.user}: ${score.score}`, { fontSize: '26px', fill: '#fff' });
 
       Phaser.Display.Align.In.Center(
         madeByText,
-        this.zone
+        this.zone,
       );
-  
+
       madeByText.setY(this.pos);
       this.pos += 100;
     }
   }
-};
+}

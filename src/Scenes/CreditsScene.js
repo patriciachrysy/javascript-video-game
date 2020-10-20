@@ -1,50 +1,56 @@
+/*
+  eslint-disable import/no-extraneous-dependencies, no-undef, class-methods-use-this,
+   no-unused-vars, no-unused-expressions, func-names
+
+*/
+
 import 'phaser';
 import config from '../Config/config';
 
 export default class CreditsScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Credits');
   }
 
-  create () {
+  create() {
     this.congratsText = this.add.text(0, 0, 'Congratulations, you won!!!', { fontSize: '45px', fill: '#00ff00' });
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
     this.madeByText = this.add.text(0, 0, 'Created By: Manezeu Patricia Chrystelle', { fontSize: '26px', fill: '#fff' });
     this.descipText = this.add.text(0, 0, 'Treasure Hunt 2D game, part of Microverse capstone project', { fontSize: '26px', fill: '#fff' });
     this.phaserText = this.add.text(0, 0, 'Special thanks to: Phaser3 official documentation', { fontSize: '26px', fill: '#fff' });
     this.ogaText = this.add.text(0, 0, 'Special thanks to: OpenGameArt for the designs', { fontSize: '26px', fill: '#fff' });
-    this.zone = this.add.zone(config.width/2, config.height/2, config.width, config.height);
+    this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
     Phaser.Display.Align.In.Center(
       this.congratsText,
-      this.zone
+      this.zone,
     );
 
     Phaser.Display.Align.In.Center(
       this.creditsText,
-      this.zone
+      this.zone,
     );
 
     Phaser.Display.Align.In.Center(
       this.madeByText,
-      this.zone
+      this.zone,
     );
 
     Phaser.Display.Align.In.Center(
       this.descipText,
-      this.zone
+      this.zone,
     );
 
     Phaser.Display.Align.In.Center(
       this.phaserText,
-      this.zone
+      this.zone,
     );
 
     Phaser.Display.Align.In.Center(
       this.ogaText,
-      this.zone
+      this.zone,
     );
-    //this.congratsText.setY(100);
+    // this.congratsText.setY(100);
     this.creditsText.setY(1000);
     this.madeByText.setY(2000);
     this.descipText.setY(3000);
@@ -57,9 +63,9 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 10000,
       delay: 2000,
-      onComplete: function () {
+      onComplete() {
         this.destroy;
-      }
+      },
     });
 
     this.creditsTween = this.tweens.add({
@@ -68,9 +74,9 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 10000,
       delay: 3000,
-      onComplete: function () {
+      onComplete() {
         this.destroy;
-      }
+      },
     });
 
     this.madeByTween = this.tweens.add({
@@ -82,7 +88,7 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: function () {
         this.madeByTween.destroy;
         this.scene.start('Title');
-      }.bind(this)
+      }.bind(this),
     });
 
     this.descipText = this.tweens.add({
@@ -94,7 +100,7 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: function () {
         this.descipText.destroy;
         this.scene.start('Title');
-      }.bind(this)
+      }.bind(this),
     });
 
     this.phaserText = this.tweens.add({
@@ -106,7 +112,7 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: function () {
         this.phaserText.destroy;
         this.scene.start('Title');
-      }.bind(this)
+      }.bind(this),
     });
 
     this.ogaText = this.tweens.add({
@@ -118,7 +124,7 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: function () {
         this.ogaText.destroy;
         this.scene.start('Title');
-      }.bind(this)
+      }.bind(this),
     });
   }
-};
+}

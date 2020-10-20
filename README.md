@@ -11,12 +11,12 @@ Implementation of a Jump-Based Endless Runner Game built with the [Phaser 3](htt
 
 ## About The Project
 
-The main objective of this project was to build a platform game. The basics of the game are used from the [Endless Runner game](https://www.emanueleferonato.com/2018/11/13/build-a-html5-endless-runner-with-phaser-in-a-few-lines-of-code-using-arcade-physics-and-featuring-object-pooling/) using Phaser and Javascript among other technologies.
+The main objective of this project was to build a platform game.
 
 
 Live version of the project: [Live version](https://endless-run.netlify.app/)
 
-Project Link: [Javascript-Capstone](https://github.com/taiwocoker/Platform-Game)
+Project Link: [Javascript-Capstone](https://github.com/patriciachrysy/javascript-capstone)
 
 ## The game
 
@@ -66,7 +66,7 @@ http://localhost:8000/
 
 **Run Jest tests**
 ```
-npm test
+npm run test
 ```
 
 
@@ -76,35 +76,20 @@ All of the sprites, backgrounds, buttons and the background music can be found o
 
 **Landing Scene**
 
-<p align="center">
-  <img src="">
-</p>
+![screenshot](./game_start.png)
 
 **Game Scene**
 
-<p align="center">
-  <img src="">
-</p>
+![screenshot](./game_scene.png)
 
 **Credits Scene**
 
-<p align="center">
-  <img src="">
-</p>
+![screenshot](./credit_scene.png)
 
 **Leaderboard Scene**
 
-<p align="center">
-  <img src="">
-</p>
+![screenshot](./leader_board.png)
 
-
-
-**Game Over Scene**
-
-<p align="center">
-  <img src="">
-</p>
 
 ## Technologies used
 

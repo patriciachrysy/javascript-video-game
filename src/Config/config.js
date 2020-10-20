@@ -1,3 +1,7 @@
+/*
+  eslint-disable import/no-extraneous-dependencies, no-undef
+*/
+
 import 'phaser';
 
 export default {
@@ -6,10 +10,10 @@ export default {
   width: 800,
   height: 600,
   physics: {
-      default: 'arcade',
-      arcade: {
-          gravity: { y: 300 },
-          debug: false
-      }
-  }
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 300 },
+      debug: false,
+    },
+  },
 };

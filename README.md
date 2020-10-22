@@ -40,7 +40,7 @@ Project Link: [Javascript-Capstone](https://github.com/patriciachrysy/javascript
 
 ### Installation
 
-You can always use the [live version](https://treasure-hunt-game.netlify.app/) to play right away or install it locally using these steps:
+You can always use the live version link above to play right away or install it locally using these steps:
 
 **Clone the repository by running this command in your terminal**
 ```

@@ -1,15 +1,19 @@
+/*
+  eslint-disable import/no-extraneous-dependencies, no-undef, class-methods-use-this, no-unused-vars
+*/
+
 import 'phaser';
 
 export default class BootScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Boot');
   }
 
-  preload () {
-    this.load.image('logo', 'assets/zenva_logo.png');
+  preload() {
+    this.load.image('logo', 'assets/Treasure-Hunt-logo.png');
   }
 
-  create () {
+  create() {
     this.scene.start('Preloader');
   }
-};
+}

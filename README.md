@@ -1,7 +1,7 @@
 # JavaScript Capstone Project - Platform Game
 
 <h1 align="center">
-  Sword Quest
+  Treasure Hunt
 </h1> 
 
 > Final project in the Microverse JavaScript Curriculum
@@ -11,26 +11,28 @@ Implementation of a Jump-Based Endless Runner Game built with the [Phaser 3](htt
 
 ## About The Project
 
-The main objective of this project was to build a platform game. The basics of the game are used from the [Endless Runner game](https://www.emanueleferonato.com/2018/11/13/build-a-html5-endless-runner-with-phaser-in-a-few-lines-of-code-using-arcade-physics-and-featuring-object-pooling/) using Phaser and Javascript among other technologies.
+The main objective of this project was to build a platform game.
 
 
-Live version of the project: [Live version](https://endless-run.netlify.app/)
+Live version of the project: [Live version](https://treasure-hunt-game.netlify.app/)
 
-Project Link: [Javascript-Capstone](https://github.com/taiwocoker/Platform-Game)
+Project Link: [Javascript-Capstone](https://github.com/patriciachrysy/javascript-capstone)
 
 ## The game
 
 - A simple game in 2D
-- the main character must get escalibur to claim the throne of his kingdom
-- he has 20 shurikens in the begining and he can use them to throw on the badies
-- he must either avoid badies or throw bombs at them to make them dispear
+- the main character must fovercome allthe dangers and obstacles to get the treasure box
+- he has 0 power in the begining but he can pick up magic flower to get them and he can throw fire on the badies
+- he must either avoid badies or throw fire at them to make them disapear
 - he dies if he colides with badies
-- he has to collect diamonds to recharge his bombs to 20
-- The game ends when he finally collects the sword.
+- he has to collect magic flowers to recharge his powers
+- The game ends when he finally collects the treasure box.
 
 ### How to play
 
-
+- When the game starts, choose some options and then click on the menu button
+- Afterward, click on the play button and written your name in the box
+- Use key left and right to move the player horizontally, up to jump, and space to throw fire on badies
 
 #### Get a local copy
 
@@ -38,7 +40,7 @@ Project Link: [Javascript-Capstone](https://github.com/taiwocoker/Platform-Game)
 
 ### Installation
 
-You can always use the [live version]() to play right away or install it locally using these steps:
+You can always use the live version link above to play right away or install it locally using these steps:
 
 **Clone the repository by running this command in your terminal**
 ```
@@ -64,7 +66,7 @@ http://localhost:8000/
 
 **Run Jest tests**
 ```
-npm test
+npm run test
 ```
 
 
@@ -74,35 +76,20 @@ All of the sprites, backgrounds, buttons and the background music can be found o
 
 **Landing Scene**
 
-<p align="center">
-  <img src="">
-</p>
+![screenshot](./game_start.png)
 
 **Game Scene**
 
-<p align="center">
-  <img src="">
-</p>
+![screenshot](./game_scene.png)
 
 **Credits Scene**
 
-<p align="center">
-  <img src="">
-</p>
+![screenshot](./credits_scene.png)
 
 **Leaderboard Scene**
 
-<p align="center">
-  <img src="">
-</p>
+![screenshot](./leader_board.png)
 
-
-
-**Game Over Scene**
-
-<p align="center">
-  <img src="">
-</p>
 
 ## Technologies used
 
